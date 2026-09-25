@@ -43,8 +43,3 @@ For another tactile interaction, add three files with a shared numeric ID to `as
 
 Add matching JPGs to `assets/tactile-posters/`, then append `"0123"` to `samples` in `data.js`. Matching timing is necessary for synchronized playback.
 
-## Publication details to finalize
-
-The supplied manuscript is anonymous and still has internal notes, so it is not bundled for public download. The site retains “Anonymous authors” and has no invented paper, code, or citation links. The ten selected interactions are not the complete evaluation set. The bimanual section uses four supplied stitched videos.
-
-Project content comes from the supplied manuscript, the supplied `opentouch` folder, and the user-provided PowerPoint pipeline screenshot. Visual references: [VT-Refine](https://binghao-huang.github.io/vt_refine/), [UniTouch](https://cfeng16.github.io/UniTouch/). Organization reference: [ProxyPose](https://ruihangzhang97.github.io/proxypose/). The site implementation is original.
