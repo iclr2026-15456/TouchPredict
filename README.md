@@ -1,6 +1,6 @@
 # Video Generators Can Predict Touch
 
-A static project website ready for a GitHub repository. The hero includes stitched EgoTouch, OpenTouch, and out-of-distribution videos. The results gallery has ten OpenTouch interactions with synchronized RGB, generated tactile, and ground-truth tactile videos (30 clips total). A separate 2×2 joint-prediction section displays four supplied stitched videos. The Two Hands Generation section displays four supplied EgoTouch stitched clips. The over- and underprediction section displays five H.264 composite videos with generated/ground-truth labels and a red/blue error legend. The method section displays the supplied PowerPoint pipeline screenshot.
+A static project website ready for a GitHub repository. The hero includes stitched EgoTouch, OpenTouch, and out-of-distribution videos. The results gallery has ten OpenTouch interactions with synchronized RGB, generated tactile, and ground-truth tactile videos (30 clips total). A separate 2×2 joint-prediction section displays four supplied stitched videos. The Two Hands Generation section displays four supplied EgoTouch stitched clips. The over- and underprediction section displays five H.264 composite videos with generated/ground-truth labels and a red/blue error legend. The method section displays the supplied PowerPoint pipeline screenshot. A final out-of-distribution section displays four additional stitched tactile predictions.
 
 ## Preview locally
 
@@ -33,6 +33,7 @@ The site's asset paths are relative, so a repository subpath works. There is no 
 - `assets/joint/`: four supplied stitched joint-prediction examples as browser-compatible H.264 MP4s, plus JPG posters.
 - `assets/overunder/`: five over- and underprediction composites as browser-compatible H.264 MP4s, plus JPG posters.
 - `assets/bimanual/`: four supplied stitched two-hand EgoTouch examples as browser-compatible H.264 MP4s, plus JPG posters.
+- `assets/ood/`: four supplied out-of-distribution stitched predictions as browser-compatible H.264 MP4s, plus JPG posters.
 
 For another tactile interaction, add three files with a shared numeric ID to `assets/tactile-videos/`:
 

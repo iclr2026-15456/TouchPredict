@@ -9,7 +9,7 @@
 </head>
 <body>
 <a class="skip" href="#overview">Skip to content</a>
-<header class="topbar"><nav class="nav wrap" aria-label="Main navigation"><a class="wordmark" href="#"><span class="brand-dot"></span> Video <span class="brand-touch">/ Touch</span></a><div class="navlinks"><a href="#gallery">Results</a><a href="#method">Method</a><a href="#joint">Joint prediction</a><a href="#bimanual">Bimanual</a><a href="#overunder">Error analysis</a></div><a class="nav-end" href="#gallery">Explore videos <span aria-hidden="true">↗</span></a></nav></header>
+<header class="topbar"><nav class="nav wrap" aria-label="Main navigation"><a class="wordmark" href="#"><span class="brand-dot"></span> Video <span class="brand-touch">/ Touch</span></a><div class="navlinks"><a href="#gallery">Results</a><a href="#method">Method</a><a href="#joint">Joint prediction</a><a href="#bimanual">Bimanual</a><a href="#overunder">Error analysis</a><a href="#ood">OOD</a></div><a class="nav-end" href="#gallery">Explore videos <span aria-hidden="true">↗</span></a></nav></header>
 <main>
 <section class="hero wrap" id="overview">
 <h1><span>Video Generators</span><br>Can Predict <em>Touch</em></h1>
@@ -19,7 +19,7 @@
 <div class="stitched-showcase" aria-label="Stitched video examples">
   <article class="stitched-slot stitched-slot-ego"><div class="slot-frame"><video src="assets/stitched/egotouch.mp4" poster="assets/stitched/egotouch.jpg" aria-label="EgoTouch stitched RGB and left and right tactile video" autoplay muted loop playsinline preload="metadata"></video><div class="row-labels" aria-label="Video row labels"><span>Generated</span><span>GT</span></div></div><h2>EgoTouch</h2></article>
   <article class="stitched-slot"><div class="slot-frame"><video src="assets/stitched/opentouch.mp4" poster="assets/stitched/opentouch.jpg" aria-label="OpenTouch stitched RGB and tactile video" autoplay muted loop playsinline preload="metadata"></video><div class="row-labels" aria-label="Video row labels"><span>Generated</span><span>GT</span></div></div><h2>OpenTouch</h2></article>
-  <article class="stitched-slot"><div class="slot-frame"><video src="assets/stitched/ood.mp4" poster="assets/stitched/ood.jpg" aria-label="Out-of-distribution stitched RGB and generated tactile video" autoplay muted loop playsinline preload="metadata"></video><div class="row-labels" aria-label="Video row labels"><span>Generated</span><span>No GT</span></div></div><h2>Out-of-distribution</h2></article>
+  <article class="stitched-slot"><div class="slot-frame"><video src="assets/stitched/ood.mp4" poster="assets/stitched/ood.jpg" aria-label="Out-of-distribution stitched RGB and generated tactile video" autoplay muted loop playsinline preload="metadata"></video><div class="row-labels" aria-label="Video row labels"><span>Generated</span><span>GT</span></div></div><h2>Out-of-distribution</h2></article>
 </div>
 </section>
 <section class="abstract-section"><div class="reading-width"><h2>Learning to infer touch from vision</h2><p>Tactile data is expensive to collect. Videos of hands interacting with the world are abundant. We investigate whether the interaction priors of a pretrained video generator can help recover touch from those videos.</p><p>Our model adapts <strong>Wan2.1-Fun-Control with lightweight LoRA</strong> to jointly generate tactile, hand configuration, and hand–object segmentation. Each target is a video stream.</p></div></section>
@@ -64,6 +64,15 @@
   </div>
 </section>
 
+<section class="section wrap" id="ood">
+  <div class="section-heading"><div><h2>Out-of-distribution</h2></div></div>
+  <div class="joint-grid" aria-label="Four out-of-distribution tactile prediction videos">
+    <article class="joint-slot"><div class="joint-slot-frame"><video src="assets/ood/egotactile-coca-cola.mp4" poster="assets/ood/egotactile-coca-cola.jpg" aria-label="EgoTactile out-of-distribution prediction for a Coca-Cola can" autoplay muted loop playsinline preload="metadata"></video><div class="row-labels" aria-label="Video row labels"><span>Generated</span><span>GT</span></div></div></article>
+    <article class="joint-slot"><div class="joint-slot-frame"><video src="assets/ood/egotactile-dumbbell.mp4" poster="assets/ood/egotactile-dumbbell.jpg" aria-label="EgoTactile out-of-distribution prediction for a dumbbell" autoplay muted loop playsinline preload="metadata"></video><div class="row-labels" aria-label="Video row labels"><span>Generated</span><span>GT</span></div></div></article>
+    <article class="joint-slot"><div class="joint-slot-frame"><video src="assets/ood/opentouch-bag.mp4" poster="assets/ood/opentouch-bag.jpg" aria-label="OpenTouch out-of-distribution prediction for opening a bag" autoplay muted loop playsinline preload="metadata"></video><div class="row-labels" aria-label="Video row labels"><span>Generated</span><span>GT</span></div></div></article>
+    <article class="joint-slot"><div class="joint-slot-frame"><video src="assets/ood/opentouch-episode.mp4" poster="assets/ood/opentouch-episode.jpg" aria-label="OpenTouch out-of-distribution prediction" autoplay muted loop playsinline preload="metadata"></video><div class="row-labels" aria-label="Video row labels"><span>Generated</span><span>GT</span></div></div></article>
+  </div>
+</section>
 </main><footer class="wrap"><a class="wordmark" href="#">Video <span class="brand-touch">/ Touch</span></a><p>Video Generators Can Predict Touch</p><a href="#">Back to top ↑</a></footer>
 <noscript><p class="wrap">Enable JavaScript to explore the OpenTouch comparison gallery. The figures remain available.</p></noscript>
 </body></html>
