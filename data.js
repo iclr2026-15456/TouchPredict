@@ -16,6 +16,5 @@ window.PROJECT = {
   ],
   "defaultSample": "0038",
   "paperUrl": "",
-  "codeUrl": "",
-  "galleryUrl": "https://rayhanehb.github.io/egoTouch-joint-validation-gallery/index.html"
+  "codeUrl": ""
 };

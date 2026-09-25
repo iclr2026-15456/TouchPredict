@@ -4,17 +4,18 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="Predicting tactile, hand configuration, and hand–object segmentation from egocentric RGB video with a pretrained video diffusion model.">
 <meta name="theme-color" content="#ffffff"><title>Video Generators Can Predict Touch</title>
-<link rel="icon" href="assets/images/tactile.png"><link rel="stylesheet" href="styles.css?v=12">
-<script defer src="data.js?v=10"></script><script defer src="app.js?v=13"></script>
+<link rel="icon" href="assets/images/tactile.png"><link rel="stylesheet" href="styles.css?v=13">
+<script defer src="data.js?v=11"></script><script defer src="app.js?v=13"></script>
 </head>
 <body>
 <a class="skip" href="#overview">Skip to content</a>
-<header class="topbar"><nav class="nav wrap" aria-label="Main navigation"><a class="wordmark" href="#"><span class="brand-dot"></span> Video <span class="brand-touch">/ Touch</span></a><div class="navlinks"><a href="#gallery">Results</a><a href="#method">Method</a><a href="#joint">Joint prediction</a><a href="#bimanual">Bimanual</a></div><a class="nav-end" href="#gallery">Explore videos <span aria-hidden="true">↗</span></a></nav></header>
+<header class="topbar"><nav class="nav wrap" aria-label="Main navigation"><a class="wordmark" href="#"><span class="brand-dot"></span> Video <span class="brand-touch">/ Touch</span></a><div class="navlinks"><a href="#gallery">Results</a><a href="#method">Method</a><a href="#joint">Joint prediction</a><a href="#bimanual">Bimanual</a><a href="#overunder">Error analysis</a></div><a class="nav-end" href="#gallery">Explore videos <span aria-hidden="true">↗</span></a></nav></header>
 <main>
 <section class="hero wrap" id="overview">
 <h1><span>Video Generators</span><br>Can Predict <em>Touch</em></h1>
 <p class="subtitle" id="project-subtitle">Tactile Synthesis from Egocentric Video</p>
 <p class="authors" id="authors">Anonymous authors</p>
+<div id="publication-links"></div>
 <div class="stitched-showcase" aria-label="Stitched video examples">
   <article class="stitched-slot stitched-slot-ego"><div class="slot-frame"><video src="assets/stitched/egotouch.mp4" poster="assets/stitched/egotouch.jpg" aria-label="EgoTouch stitched RGB and left and right tactile video" autoplay muted loop playsinline preload="metadata"></video><div class="row-labels" aria-label="Video row labels"><span>Generated</span><span>GT</span></div></div><h2>EgoTouch</h2></article>
   <article class="stitched-slot"><div class="slot-frame"><video src="assets/stitched/opentouch.mp4" poster="assets/stitched/opentouch.jpg" aria-label="OpenTouch stitched RGB and tactile video" autoplay muted loop playsinline preload="metadata"></video><div class="row-labels" aria-label="Video row labels"><span>Generated</span><span>GT</span></div></div><h2>OpenTouch</h2></article>
@@ -28,7 +29,6 @@
 
 <p class="viewer-note" id="viewer-note">Tactile activity is rendered on a static hand. Brighter regions indicate greater tactile activity.</p>
 <div class="thumbnail-heading"><span>Choose an interaction</span><span id="sequence-count">10 sequences</span></div><div class="thumbnails" id="thumbnails" role="group" aria-label="Choose a video sequence"></div>
-<p class="gallery-link">More examples and diagnostic views in the <a href="https://rayhanehb.github.io/egoTouch-joint-validation-gallery/index.html" target="_blank" rel="noopener">full validation gallery ↗</a></p>
 </section>
 <section class="method-section" id="method"><div class="wrap section">
 <div class="section-heading"><div><h2>Method overview</h2></div><p>Joint generation of tactile, hand configuration, and hand–object segmentation from RGB video.</p></div>
@@ -50,7 +50,20 @@
   <article class="joint-slot"><div class="joint-slot-frame"><video src="assets/bimanual/0128.mp4" poster="assets/bimanual/0128.jpg" aria-label="EgoTouch: Opening a package bag" autoplay muted loop playsinline preload="metadata"></video><div class="row-labels" aria-label="Video row labels"><span>Generated</span><span>GT</span></div></div></article>
   <article class="joint-slot"><div class="joint-slot-frame"><video src="assets/bimanual/0081.mp4" poster="assets/bimanual/0081.jpg" aria-label="EgoTouch: Putting back a ping-pong paddle" autoplay muted loop playsinline preload="metadata"></video><div class="row-labels" aria-label="Video row labels"><span>Generated</span><span>GT</span></div></div></article>
 </div></section>
-<section class="section wrap resources" id="resources"><div><h2>A closer look at the results</h2><p>Browse the original validation gallery for additional examples and tactile error visualizations.</p></div><a class="button dark" href="https://rayhanehb.github.io/egoTouch-joint-validation-gallery/index.html" target="_blank" rel="noopener">Open validation gallery ↗</a><div id="publication-links"></div></section>
+
+<section class="section wrap overunder-section" id="overunder">
+  <div class="section-heading"><div><h2>Over- and underprediction</h2></div><p>Compare generated tactile with ground truth and inspect where they differ.</p></div>
+  <div class="error-legend" aria-label="Difference map legend"><span><i class="error-swatch over"></i>Red: generated tactile overpredicts</span><span><i class="error-swatch under"></i>Blue: generated tactile underpredicts</span></div>
+  <p class="overunder-scroll-note">Swipe each video sideways to see the difference maps.</p>
+  <div class="overunder-list" aria-label="Five over- and underprediction examples">
+    <article class="overunder-example" aria-label="Over- and underprediction example 1"><div class="overunder-viewport"><div class="overunder-media"><div class="overunder-headings" aria-hidden="true"><span>RGB input</span><span>Tactile</span><span>Intensity difference</span><span>Location difference</span></div><div class="overunder-frame"><video src="assets/overunder/0043.mp4" poster="assets/overunder/0043.jpg" aria-label="Example 1: RGB input, generated and ground-truth tactile, intensity difference, and location difference" autoplay muted loop playsinline preload="metadata"></video><span class="tactile-overlay generated">Gen</span><span class="tactile-overlay ground-truth">GT</span></div></div></div></article>
+    <article class="overunder-example" aria-label="Over- and underprediction example 2"><div class="overunder-viewport"><div class="overunder-media"><div class="overunder-headings" aria-hidden="true"><span>RGB input</span><span>Tactile</span><span>Intensity difference</span><span>Location difference</span></div><div class="overunder-frame"><video src="assets/overunder/0038.mp4" poster="assets/overunder/0038.jpg" aria-label="Example 2: RGB input, generated and ground-truth tactile, intensity difference, and location difference" autoplay muted loop playsinline preload="metadata"></video><span class="tactile-overlay generated">Gen</span><span class="tactile-overlay ground-truth">GT</span></div></div></div></article>
+    <article class="overunder-example" aria-label="Over- and underprediction example 3"><div class="overunder-viewport"><div class="overunder-media"><div class="overunder-headings" aria-hidden="true"><span>RGB input</span><span>Tactile</span><span>Intensity difference</span><span>Location difference</span></div><div class="overunder-frame"><video src="assets/overunder/0032.mp4" poster="assets/overunder/0032.jpg" aria-label="Example 3: RGB input, generated and ground-truth tactile, intensity difference, and location difference" autoplay muted loop playsinline preload="metadata"></video><span class="tactile-overlay generated">Gen</span><span class="tactile-overlay ground-truth">GT</span></div></div></div></article>
+    <article class="overunder-example" aria-label="Over- and underprediction example 4"><div class="overunder-viewport"><div class="overunder-media"><div class="overunder-headings" aria-hidden="true"><span>RGB input</span><span>Tactile</span><span>Intensity difference</span><span>Location difference</span></div><div class="overunder-frame"><video src="assets/overunder/0009.mp4" poster="assets/overunder/0009.jpg" aria-label="Example 4: RGB input, generated and ground-truth tactile, intensity difference, and location difference" autoplay muted loop playsinline preload="metadata"></video><span class="tactile-overlay generated">Gen</span><span class="tactile-overlay ground-truth">GT</span></div></div></div></article>
+    <article class="overunder-example" aria-label="Over- and underprediction example 5"><div class="overunder-viewport"><div class="overunder-media"><div class="overunder-headings" aria-hidden="true"><span>RGB input</span><span>Tactile</span><span>Intensity difference</span><span>Location difference</span></div><div class="overunder-frame"><video src="assets/overunder/0005.mp4" poster="assets/overunder/0005.jpg" aria-label="Example 5: RGB input, generated and ground-truth tactile, intensity difference, and location difference" autoplay muted loop playsinline preload="metadata"></video><span class="tactile-overlay generated">Gen</span><span class="tactile-overlay ground-truth">GT</span></div></div></div></article>
+  </div>
+</section>
+
 </main><footer class="wrap"><a class="wordmark" href="#">Video <span class="brand-touch">/ Touch</span></a><p>Video Generators Can Predict Touch</p><a href="#">Back to top ↑</a></footer>
 <noscript><p class="wrap">Enable JavaScript to explore the OpenTouch comparison gallery. The figures remain available.</p></noscript>
 </body></html>
