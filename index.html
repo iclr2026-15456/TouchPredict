@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Predicting tactile, hand configuration, and hand–object segmentation from egocentric RGB video with a pretrained video diffusion model.">
+<meta name="theme-color" content="#ffffff"><title>Video Generators Can Predict Touch</title>
+<link rel="icon" href="assets/images/tactile.png"><link rel="stylesheet" href="styles.css?v=12">
+<script defer src="data.js?v=10"></script><script defer src="app.js?v=13"></script>
+</head>
+<body>
+<a class="skip" href="#overview">Skip to content</a>
+<header class="topbar"><nav class="nav wrap" aria-label="Main navigation"><a class="wordmark" href="#"><span class="brand-dot"></span> Video <span class="brand-touch">/ Touch</span></a><div class="navlinks"><a href="#gallery">Results</a><a href="#method">Method</a><a href="#joint">Joint prediction</a><a href="#bimanual">Bimanual</a></div><a class="nav-end" href="#gallery">Explore videos <span aria-hidden="true">↗</span></a></nav></header>
+<main>
+<section class="hero wrap" id="overview">
+<h1><span>Video Generators</span><br>Can Predict <em>Touch</em></h1>
+<p class="subtitle" id="project-subtitle">Tactile Synthesis from Egocentric Video</p>
+<p class="authors" id="authors">Anonymous authors</p>
+<div class="stitched-showcase" aria-label="Stitched video examples">
+  <article class="stitched-slot stitched-slot-ego"><div class="slot-frame"><video src="assets/stitched/egotouch.mp4" poster="assets/stitched/egotouch.jpg" aria-label="EgoTouch stitched RGB and left and right tactile video" autoplay muted loop playsinline preload="metadata"></video><div class="row-labels" aria-label="Video row labels"><span>Generated</span><span>GT</span></div></div><h2>EgoTouch</h2></article>
+  <article class="stitched-slot"><div class="slot-frame"><video src="assets/stitched/opentouch.mp4" poster="assets/stitched/opentouch.jpg" aria-label="OpenTouch stitched RGB and tactile video" autoplay muted loop playsinline preload="metadata"></video><div class="row-labels" aria-label="Video row labels"><span>Generated</span><span>GT</span></div></div><h2>OpenTouch</h2></article>
+  <article class="stitched-slot"><div class="slot-frame"><video src="assets/stitched/ood.mp4" poster="assets/stitched/ood.jpg" aria-label="Out-of-distribution stitched RGB and generated tactile video" autoplay muted loop playsinline preload="metadata"></video><div class="row-labels" aria-label="Video row labels"><span>Generated</span><span>No GT</span></div></div><h2>Out-of-distribution</h2></article>
+</div>
+</section>
+<section class="abstract-section"><div class="reading-width"><h2>Learning to infer touch from vision</h2><p>Tactile data is expensive to collect. Videos of hands interacting with the world are abundant. We investigate whether the interaction priors of a pretrained video generator can help recover touch from those videos.</p><p>Our model adapts <strong>Wan2.1-Fun-Control with lightweight LoRA</strong> to jointly generate tactile, hand configuration, and hand–object segmentation. Each target is a video stream.</p></div></section>
+<section class="section wrap" id="gallery">
+<div class="section-heading"><div><h2>See what the model feels</h2></div><p>Held-out OpenTouch</p></div>
+<div class="comparison-grid" id="comparison-grid"></div>
+
+<p class="viewer-note" id="viewer-note">Tactile activity is rendered on a static hand. Brighter regions indicate greater tactile activity.</p>
+<div class="thumbnail-heading"><span>Choose an interaction</span><span id="sequence-count">10 sequences</span></div><div class="thumbnails" id="thumbnails" role="group" aria-label="Choose a video sequence"></div>
+<p class="gallery-link">More examples and diagnostic views in the <a href="https://rayhanehb.github.io/egoTouch-joint-validation-gallery/index.html" target="_blank" rel="noopener">full validation gallery ↗</a></p>
+</section>
+<section class="method-section" id="method"><div class="wrap section">
+<div class="section-heading"><div><h2>Method overview</h2></div><p>Joint generation of tactile, hand configuration, and hand–object segmentation from RGB video.</p></div>
+<figure class="source-pipeline"><a href="assets/images/pipeline-powerpoint.png" target="_blank" rel="noopener" aria-label="Open the original pipeline figure at full size"><img src="assets/images/pipeline-powerpoint.png" alt="PowerPoint pipeline figure: target streams and RGB conditioning enter the Wan Encoder; target latents are concatenated in height, noised, joined with RGB along channels, patchified, processed by Wan-DiT with LoRA, and decoded into output streams." loading="lazy"></a><figcaption><a href="assets/images/pipeline-powerpoint.png" target="_blank" rel="noopener">View figure at full size ↗</a></figcaption></figure>
+</div></section>
+<section class="joint-section" id="joint"><div class="wrap section">
+  <div class="section-heading"><div><h2>Joint Prediction</h2></div><p>Four stitched examples showing RGB video alongside the predicted output streams.</p></div>
+  <div class="joint-grid" aria-label="Four stitched joint prediction videos">
+    <div class="joint-slot"><div class="joint-slot-frame"><video src="assets/joint/0043.mp4" poster="assets/joint/0043.jpg" aria-label="Joint prediction sequence 0043" autoplay muted loop playsinline preload="metadata"></video><div class="row-labels" aria-label="Video row labels"><span>Generated</span><span>GT</span></div></div></div>
+    <div class="joint-slot"><div class="joint-slot-frame"><video src="assets/joint/0009.mp4" poster="assets/joint/0009.jpg" aria-label="Joint prediction sequence 0009" autoplay muted loop playsinline preload="metadata"></video><div class="row-labels" aria-label="Video row labels"><span>Generated</span><span>GT</span></div></div></div>
+    <div class="joint-slot"><div class="joint-slot-frame"><video src="assets/joint/0038.mp4" poster="assets/joint/0038.jpg" aria-label="Joint prediction sequence 0038" autoplay muted loop playsinline preload="metadata"></video><div class="row-labels" aria-label="Video row labels"><span>Generated</span><span>GT</span></div></div></div>
+    <div class="joint-slot"><div class="joint-slot-frame"><video src="assets/joint/0032.mp4" poster="assets/joint/0032.jpg" aria-label="Joint prediction sequence 0032" autoplay muted loop playsinline preload="metadata"></video><div class="row-labels" aria-label="Video row labels"><span>Generated</span><span>GT</span></div></div></div>
+  </div>
+</div></section>
+<section class="section wrap" id="bimanual"><div class="section-heading"><div><h2>Two Hands Generation</h2></div><p>EgoTouch examples with left- and right-hand tactile predictions.</p></div>
+<div class="joint-grid bimanual-grid" aria-label="Four two-hand generation videos">
+  <article class="joint-slot"><div class="joint-slot-frame"><video src="assets/bimanual/0061.mp4" poster="assets/bimanual/0061.jpg" aria-label="EgoTouch: Picking up a pen and writing" autoplay muted loop playsinline preload="metadata"></video><div class="row-labels" aria-label="Video row labels"><span>Generated</span><span>GT</span></div></div></article>
+  <article class="joint-slot"><div class="joint-slot-frame"><video src="assets/bimanual/0006.mp4" poster="assets/bimanual/0006.jpg" aria-label="EgoTouch: Rotating a table clamp" autoplay muted loop playsinline preload="metadata"></video><div class="row-labels" aria-label="Video row labels"><span>Generated</span><span>GT</span></div></div></article>
+  <article class="joint-slot"><div class="joint-slot-frame"><video src="assets/bimanual/0128.mp4" poster="assets/bimanual/0128.jpg" aria-label="EgoTouch: Opening a package bag" autoplay muted loop playsinline preload="metadata"></video><div class="row-labels" aria-label="Video row labels"><span>Generated</span><span>GT</span></div></div></article>
+  <article class="joint-slot"><div class="joint-slot-frame"><video src="assets/bimanual/0081.mp4" poster="assets/bimanual/0081.jpg" aria-label="EgoTouch: Putting back a ping-pong paddle" autoplay muted loop playsinline preload="metadata"></video><div class="row-labels" aria-label="Video row labels"><span>Generated</span><span>GT</span></div></div></article>
+</div></section>
+<section class="section wrap resources" id="resources"><div><h2>A closer look at the results</h2><p>Browse the original validation gallery for additional examples and tactile error visualizations.</p></div><a class="button dark" href="https://rayhanehb.github.io/egoTouch-joint-validation-gallery/index.html" target="_blank" rel="noopener">Open validation gallery ↗</a><div id="publication-links"></div></section>
+</main><footer class="wrap"><a class="wordmark" href="#">Video <span class="brand-touch">/ Touch</span></a><p>Video Generators Can Predict Touch</p><a href="#">Back to top ↑</a></footer>
+<noscript><p class="wrap">Enable JavaScript to explore the OpenTouch comparison gallery. The figures remain available.</p></noscript>
+</body></html>
